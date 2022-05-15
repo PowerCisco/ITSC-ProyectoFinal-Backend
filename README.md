@@ -1,2 +1,2 @@
-# ITSC-ProyectoFinal-Backend
-Repo para el backend del proyecto final del ITSC
+# ITSC-ProyectoFinal
+Repo para el proyecto final del ITSC de Desarrollo de Software
