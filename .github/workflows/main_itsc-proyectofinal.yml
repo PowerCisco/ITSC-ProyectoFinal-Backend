@@ -21,7 +21,7 @@ jobs:
         with:
           dotnet-version: '6.0.x'
           include-prerelease: true
-          
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'itsc-proyectofinal'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_621C19FD176B46E996C4B7190311C312 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_292AA77B485641E2AB8D8DEE357E1C8E }}
           package: .
