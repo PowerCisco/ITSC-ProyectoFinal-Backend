@@ -15,7 +15,7 @@ public class LibroController : ControllerBase
     {
         _service = service;
     }
-    
+
     // GET all action
     [HttpGet]
     public IEnumerable<Libro> GetAll()
@@ -27,7 +27,8 @@ public class LibroController : ControllerBase
     // GET by Id action
 
     [HttpGet("{id}")]
-    public ActionResult<Libro> GetById(int id){
+    public ActionResult<Libro> GetById(int id)
+    {
         var libro = _service.GetById(id);
 
         if (libro is not null)
@@ -38,6 +39,12 @@ public class LibroController : ControllerBase
     }
 
     // POST action
+    [HttpPost]
+    public IActionResult Create(Libro newLibro)
+    {
+        var libro = _service.Create(newLibro);
+        return CreatedAtAction(nameof(GetById), new { id = libro!.Id }, libro);
+    }
 
     // PUT action
 

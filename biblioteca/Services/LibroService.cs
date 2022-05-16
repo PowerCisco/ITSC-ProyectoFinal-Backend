@@ -22,11 +22,19 @@ public class LibroService
         .ToList();
     }
 
-    public Libro? GetById(int id){
+    public Libro? GetById(int id)
+    {
         return _context.Libros
         .AsNoTracking()
         .SingleOrDefault(l => l.Id == id);
     }
 
+    public Libro Create(Libro newLibro)
+    {
+        _context.Libros!.Add(newLibro);
+        _context.SaveChanges();
+
+        return newLibro;
+    }
 
 }
