@@ -37,4 +37,16 @@ public class LibroService
         return newLibro;
     }
 
+    public void Update(int id, Libro libro){
+        var libroToUpdate = _context.Libros.Find(id);
+
+        if (libroToUpdate is not null){
+            libroToUpdate.Autor = libro.Autor;
+            libroToUpdate.Titulo = libro.Titulo;
+            
+            _context.SaveChanges();
+        }
+
+    }
+
 }
