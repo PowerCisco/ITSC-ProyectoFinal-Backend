@@ -48,5 +48,21 @@ public class LibroController : ControllerBase
 
     // PUT action
 
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Libro libro){
+        
+        var libroToUpdate = _service.GetById(id);
+
+        if (libroToUpdate is not null){
+            _service.Update(id, libro);
+            return Ok();
+        }
+
+        else {
+            return NotFound();
+        }
+
+    }
+
     // DELETE action
 }
