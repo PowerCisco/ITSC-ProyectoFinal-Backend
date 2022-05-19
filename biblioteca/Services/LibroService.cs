@@ -49,4 +49,13 @@ public class LibroService
 
     }
 
+    public void Delete(int id){
+        var libroToDelete = _context.Libros.Find(id);
+
+        if (libroToDelete is not null){
+            _context.Libros.Remove(libroToDelete);
+            _context.SaveChanges();
+        }
+    }
+
 }
