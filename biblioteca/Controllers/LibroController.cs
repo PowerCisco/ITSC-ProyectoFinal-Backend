@@ -65,4 +65,19 @@ public class LibroController : ControllerBase
     }
 
     // DELETE action
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id){
+        var libroToDelete = _service.GetById(id);
+
+        if (libroToDelete is not null){
+            _service.Delete(id);
+            return Ok();
+        }
+        else
+            return NotFound();
+
+
+    }
+
 }
