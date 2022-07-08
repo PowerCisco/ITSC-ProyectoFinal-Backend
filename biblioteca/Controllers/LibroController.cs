@@ -8,15 +8,11 @@ namespace biblioteca.Controllers;
 [Route("[controller]")]
 public class LibroController : ControllerBase
 {
-
     public LibroService _service;
+    public LibroController(LibroService service) => _service = service;
 
-    public LibroController(LibroService service)
-    {
-        _service = service;
-    }
 
-    // GET all action
+    //GET all action
     [HttpGet]
     public IEnumerable<Libro> GetAll()
     {
@@ -24,41 +20,58 @@ public class LibroController : ControllerBase
     }
 
 
+
     // GET by Id action
 
     [HttpGet("{id}")]
     public ActionResult<Libro> GetById(int id)
     {
+        
         var libro = _service.GetById(id);
 
         if (libro is not null)
-            return libro;
+            return Ok(libro);
         else
             return NotFound();
 
     }
+
+    // [HttpGet("{id}")]
+    // public ActionResult<Libro> GetById(int id)
+    // {
+    //     var libro = _service.GetById(id);
+
+    //     if (libro is not null)
+    //         return libro;
+    //     else
+    //         return NotFound();
+
+    // }
 
     // POST action
     [HttpPost]
     public IActionResult Create(Libro newLibro)
     {
         var libro = _service.Create(newLibro);
-        return CreatedAtAction(nameof(GetById), new { id = libro!.Id }, libro);
+        return CreatedAtAction(nameof(GetById), new { id = libro!.LibroId }, libro);
     }
 
     // PUT action
 
     [HttpPut("{id}")]
-    public IActionResult Update(int id, Libro libro){
-        
+    public IActionResult Update(int id, Libro libro)
+    {
+
         var libroToUpdate = _service.GetById(id);
 
-        if (libroToUpdate is not null){
+        if (libroToUpdate is not null)
+        {
             _service.Update(id, libro);
             return Ok();
         }
 
-        else {
+        else
+        {
             return NotFound();
         }
 
@@ -67,10 +80,12 @@ public class LibroController : ControllerBase
     // DELETE action
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id){
+    public IActionResult Delete(int id)
+    {
         var libroToDelete = _service.GetById(id);
 
-        if (libroToDelete is not null){
+        if (libroToDelete is not null)
+        {
             _service.Delete(id);
             return Ok();
         }
