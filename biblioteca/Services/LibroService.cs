@@ -7,9 +7,9 @@ namespace biblioteca.Services;
 public class LibroService
 {
 
-    private readonly LibroContext _context;
+    private readonly BibliotecaContext _context;
 
-    public LibroService(LibroContext context)
+    public LibroService(BibliotecaContext context)
     {
         _context = context;
     }
@@ -19,14 +19,17 @@ public class LibroService
 
         return _context.Libros
         .AsNoTracking()
+        .Include(l => l.Autor)
         .ToList();
     }
 
     public Libro? GetById(int id)
     {
+        
         return _context.Libros
         .AsNoTracking()
-        .SingleOrDefault(l => l.Id == id);
+        .Include(l => l.Autor)
+        .SingleOrDefault(l => l.LibroId == id);
     }
 
     public Libro Create(Libro newLibro)
@@ -37,22 +40,25 @@ public class LibroService
         return newLibro;
     }
 
-    public void Update(int id, Libro libro){
+    public void Update(int id, Libro libro)
+    {
         var libroToUpdate = _context.Libros.Find(id);
 
-        if (libroToUpdate is not null){
-            libroToUpdate.Autor = libro.Autor;
+        if (libroToUpdate is not null)
+        {
             libroToUpdate.Titulo = libro.Titulo;
-            
+
             _context.SaveChanges();
         }
 
     }
 
-    public void Delete(int id){
+    public void Delete(int id)
+    {
         var libroToDelete = _context.Libros.Find(id);
 
-        if (libroToDelete is not null){
+        if (libroToDelete is not null)
+        {
             _context.Libros.Remove(libroToDelete);
             _context.SaveChanges();
         }
