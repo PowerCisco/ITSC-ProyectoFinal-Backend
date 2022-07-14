@@ -31,8 +31,8 @@ else
 }
 
 builder.Services.AddSqlServer<BibliotecaContext>(connString);
-builder.Services.AddScoped<AutorService>();
-builder.Services.AddScoped<LibroService>();
+builder.Services.AddScoped<AtencionService>();
+builder.Services.AddScoped<MedicoService>();
 builder.Services.AddScoped<PacienteService>();
 
 var app = builder.Build();
