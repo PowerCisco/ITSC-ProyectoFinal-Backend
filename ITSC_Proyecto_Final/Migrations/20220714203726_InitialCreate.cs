@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace biblioteca.Migrations
+namespace ITSC_Proyecto_Final.Migrations
 {
     public partial class InitialCreate : Migration
     {

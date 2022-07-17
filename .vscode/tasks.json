@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/biblioteca/biblioteca.csproj",
+                "${workspaceFolder}/ITSC_Proyecto_Final/ITSC_Proyecto_Final.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/biblioteca/biblioteca.csproj",
+                "${workspaceFolder}/ITSC_Proyecto_Final/ITSC_Proyecto_Final.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/biblioteca/biblioteca.csproj"
+                "${workspaceFolder}/ITSC_Proyecto_Final/ITSC_Proyecto_Final.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

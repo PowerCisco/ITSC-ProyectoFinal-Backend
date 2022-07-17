@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "biblioteca": {
+    "ITSC_Proyecto_Final": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
