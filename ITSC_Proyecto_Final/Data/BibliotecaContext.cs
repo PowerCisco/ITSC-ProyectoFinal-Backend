@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using biblioteca.Models;
+using ITSC_Proyecto_Final.Models;
 
-namespace biblioteca.Data;
+namespace ITSC_Proyecto_Final.Data;
 
 public class BibliotecaContext : DbContext
 {

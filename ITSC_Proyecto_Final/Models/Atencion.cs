@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace biblioteca.Models;
+namespace ITSC_Proyecto_Final.Models;
 
 
 public class Atencion{

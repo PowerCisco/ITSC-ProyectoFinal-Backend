@@ -1,8 +1,8 @@
-using biblioteca.Models;
-using biblioteca.Services;
+using ITSC_Proyecto_Final.Models;
+using ITSC_Proyecto_Final.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace biblioteca.Controllers;
+namespace ITSC_Proyecto_Final.Controllers;
 
 [ApiController]
 [Route("[controller]")]

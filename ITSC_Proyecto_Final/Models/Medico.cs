@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace biblioteca.Models;
+namespace ITSC_Proyecto_Final.Models;
 
 
 public class Medico

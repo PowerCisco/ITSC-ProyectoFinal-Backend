@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using biblioteca.Data;
+using ITSC_Proyecto_Final.Data;
 
 #nullable disable
 
-namespace biblioteca.Migrations
+namespace ITSC_Proyecto_Final.Migrations
 {
     [DbContext(typeof(BibliotecaContext))]
-    [Migration("20220714203726_InitialCreate")]
-    partial class InitialCreate
+    partial class BibliotecaContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,7 +22,7 @@ namespace biblioteca.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("biblioteca.Models.Atencion", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Atencion", b =>
                 {
                     b.Property<int>("AtencionId")
                         .ValueGeneratedOnAdd()
@@ -61,7 +59,7 @@ namespace biblioteca.Migrations
                     b.ToTable("Atenciones");
                 });
 
-            modelBuilder.Entity("biblioteca.Models.Medico", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Medico", b =>
                 {
                     b.Property<int>("MedicoId")
                         .ValueGeneratedOnAdd()
@@ -89,7 +87,7 @@ namespace biblioteca.Migrations
                     b.ToTable("Medicos");
                 });
 
-            modelBuilder.Entity("biblioteca.Models.Paciente", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Paciente", b =>
                 {
                     b.Property<int>("PacienteId")
                         .ValueGeneratedOnAdd()
@@ -129,27 +127,27 @@ namespace biblioteca.Migrations
                     b.ToTable("Pacientes");
                 });
 
-            modelBuilder.Entity("biblioteca.Models.Atencion", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Atencion", b =>
                 {
-                    b.HasOne("biblioteca.Models.Medico", null)
+                    b.HasOne("ITSC_Proyecto_Final.Models.Medico", null)
                         .WithMany("Atenciones")
                         .HasForeignKey("MedicoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("biblioteca.Models.Paciente", null)
+                    b.HasOne("ITSC_Proyecto_Final.Models.Paciente", null)
                         .WithMany("Atenciones")
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("biblioteca.Models.Medico", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Medico", b =>
                 {
                     b.Navigation("Atenciones");
                 });
 
-            modelBuilder.Entity("biblioteca.Models.Paciente", b =>
+            modelBuilder.Entity("ITSC_Proyecto_Final.Models.Paciente", b =>
                 {
                     b.Navigation("Atenciones");
                 });

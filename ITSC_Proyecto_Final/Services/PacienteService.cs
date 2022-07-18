@@ -1,8 +1,8 @@
-using biblioteca.Models;
-using biblioteca.Data;
+using ITSC_Proyecto_Final.Models;
+using ITSC_Proyecto_Final.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace biblioteca.Services;
+namespace ITSC_Proyecto_Final.Services;
 
 public class PacienteService
 {
