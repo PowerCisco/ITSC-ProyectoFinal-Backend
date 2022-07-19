@@ -7,9 +7,9 @@ namespace ITSC_Proyecto_Final.Services;
 public class AtencionService
 {
 
-    private readonly BibliotecaContext _context;
+    private readonly ITSC_Proyecto_FinalContext _context;
 
-    public AtencionService(BibliotecaContext context)
+    public AtencionService(ITSC_Proyecto_FinalContext context)
     {
         _context = context;
     }

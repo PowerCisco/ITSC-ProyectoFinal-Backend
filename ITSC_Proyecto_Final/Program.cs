@@ -30,7 +30,7 @@ else
         connString = "Variable not found.";
 }
 
-builder.Services.AddSqlServer<BibliotecaContext>(connString);
+builder.Services.AddSqlServer<ITSC_Proyecto_FinalContext>(connString);
 builder.Services.AddScoped<AtencionService>();
 builder.Services.AddScoped<MedicoService>();
 builder.Services.AddScoped<PacienteService>();
