@@ -7,9 +7,9 @@ namespace ITSC_Proyecto_Final.Services;
 public class MedicoService
 {
 
-    private readonly BibliotecaContext _context;
+    private readonly ITSC_Proyecto_FinalContext _context;
 
-    public MedicoService(BibliotecaContext context)
+    public MedicoService(ITSC_Proyecto_FinalContext context)
     {
         _context = context;
     }

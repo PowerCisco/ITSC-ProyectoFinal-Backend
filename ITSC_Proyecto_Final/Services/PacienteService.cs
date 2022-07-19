@@ -7,9 +7,9 @@ namespace ITSC_Proyecto_Final.Services;
 public class PacienteService
 {
 
-    private readonly BibliotecaContext _context;
+    private readonly ITSC_Proyecto_FinalContext _context;
 
-    public PacienteService(BibliotecaContext context)
+    public PacienteService(ITSC_Proyecto_FinalContext context)
     {
         _context = context;
     }

@@ -10,7 +10,7 @@ using ITSC_Proyecto_Final.Data;
 
 namespace ITSC_Proyecto_Final.Migrations
 {
-    [DbContext(typeof(BibliotecaContext))]
+    [DbContext(typeof(ITSC_Proyecto_FinalContext))]
     partial class BibliotecaContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -11,7 +11,7 @@ using ITSC_Proyecto_Final.Data;
 
 namespace ITSC_Proyecto_Final.Migrations
 {
-    [DbContext(typeof(BibliotecaContext))]
+    [DbContext(typeof(ITSC_Proyecto_FinalContext))]
     [Migration("20220714203726_InitialCreate")]
     partial class InitialCreate
     {

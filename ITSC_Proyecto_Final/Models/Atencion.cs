@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ITSC_Proyecto_Final.Models;
 
 
