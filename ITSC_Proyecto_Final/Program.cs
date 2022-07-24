@@ -34,6 +34,7 @@ builder.Services.AddSqlServer<ITSC_Proyecto_FinalContext>(connString);
 builder.Services.AddScoped<AtencionService>();
 builder.Services.AddScoped<MedicoService>();
 builder.Services.AddScoped<PacienteService>();
+builder.Services.AddScoped<ReporteService>();
 
 var app = builder.Build();
 
