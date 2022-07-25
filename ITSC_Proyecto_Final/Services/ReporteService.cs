@@ -9,24 +9,57 @@ public class ReporteService
 
     private readonly ITSC_Proyecto_FinalContext _context;
 
+
+
     public ReporteService(ITSC_Proyecto_FinalContext context)
     {
         _context = context;
     }
 
-    public Paciente GetPaciente(Atencion atencion)
+    public Paciente GetPaciente(Atencion atencion, string tipoPaciente = "todos")
     {
-        return _context.Pacientes
-        .AsNoTracking()
-        .SingleOrDefault(p => p.PacienteId == atencion.PacienteId);
+        var TipoPaciente = new
+        {
+            Estudiante = "Estudiante",
+            Colaborador = "Colaborador",
+            Externo = "Externo"
+        };
+
+
+        if (tipoPaciente == TipoPaciente.Estudiante)
+        {
+            return _context.Pacientes
+            .AsNoTracking()
+            .SingleOrDefault(p => p.PacienteId == atencion.PacienteId && p.TipoPaciente == TipoPaciente.Estudiante);
+        }
+        else if (tipoPaciente == TipoPaciente.Estudiante)
+        {
+            return _context.Pacientes
+            .AsNoTracking()
+            .SingleOrDefault(p => p.PacienteId == atencion.PacienteId && p.TipoPaciente == TipoPaciente.Colaborador);
+        }
+        else if (tipoPaciente == TipoPaciente.Estudiante)
+        {
+            return _context.Pacientes
+            .AsNoTracking()
+            .SingleOrDefault(p => p.PacienteId == atencion.PacienteId && p.TipoPaciente == TipoPaciente.Externo);
+        }
+
+        else
+        {
+            return _context.Pacientes
+            .AsNoTracking()
+            .SingleOrDefault(p => p.PacienteId == atencion.PacienteId);
+        }
+
 
     }
 
-    public string GetNombreCompletoPaciente(Paciente paciente) 
+    public string GetNombreCompletoPaciente(Paciente paciente)
     => paciente.Nombre + " " + paciente.Apellido;
 
-    public string GetNombreCompletoMedico(Medico medico) 
-    =>  medico.PNombre + " " + medico.SNombre + " " + medico.PApellido +" " + medico.SApellido;
+    public string GetNombreCompletoMedico(Medico medico)
+    => medico.PNombre + " " + medico.SNombre + " " + medico.PApellido + " " + medico.SApellido;
 
     public int GetEdad(DateTime fechaNacimiento)
     {
@@ -45,45 +78,84 @@ public class ReporteService
         .SingleOrDefault(m => m.MedicoId == atencion.MedicoId);
     }
 
-    public IEnumerable<Atencion> GetAtenciones(DateTime fechaInicio, DateTime fechaFin)
+    public IEnumerable<Atencion> GetAtenciones(Filtro filtro)
     {
         return _context.Atenciones
         .AsNoTracking()
-        .Where(a => a.FechaAtencion >= fechaInicio && a.FechaAtencion <= fechaFin)
+        .Where(a => a.FechaAtencion >= filtro.FechaInicio && a.FechaAtencion <= filtro.FechaFin)
         .ToList();
     }
 
-    public IEnumerable<Reporte> GetReportes(DateTime fechaInicio, DateTime fechaFin)
+
+    public IEnumerable<Reporte> GetReportes(Filtro filtro)
     {
-        var atenciones = GetAtenciones(fechaInicio, fechaFin);
+        var atenciones = GetAtenciones(filtro);
 
         List<Reporte> reportes = new List<Reporte>();
 
-            // public string? Fecha { get; set; }
-            // public string? NombreCompleto { get; set; }
-            // public int? Edad { get; set; }
-            // public string? Telefono { get; set; }
-            // public string? Diagnostico { get; set; }
-            // public string? Tratamiento { get; set; }
-            // public string? Medico { get; set; }
-
-        foreach (var item in atenciones)
+        foreach (var atencion in atenciones)
         {
+
+            var paciente = GetPaciente(atencion);
             var reporte = new Reporte();
-            var paciente = GetPaciente(item);
-            var medico = GetMedico(item);
-            reporte.Edad = GetEdad(paciente.FechaNacimiento);
-            reporte.Fecha = item.FechaAtencion.ToShortDateString();
-            reporte.NombreCompleto = GetNombreCompletoPaciente(paciente);
-            reporte.Telefono = paciente.Telefono;
-            reporte.Diagnostico = item.Diagnostico;
-            reporte.Tratamiento = item.Tratamiento;
-            reporte.Medico = GetNombreCompletoMedico(medico);
+            var medico = GetMedico(atencion);
 
-            reportes.Add(reporte);
+            if (filtro.TipoPaciente == "Estudiante" && paciente.TipoPaciente == "Estudiante")
+            {
+                reporte.Edad = GetEdad(paciente.FechaNacimiento);
+                reporte.Fecha = atencion.FechaAtencion.ToShortDateString();
+                reporte.NombreCompleto = GetNombreCompletoPaciente(paciente);
+                reporte.Carrera = paciente.Carrera;
+                reporte.Matricula = paciente.Matricula;
+                reporte.Diagnostico = atencion.Diagnostico;
+                reporte.Tratamiento = atencion.Tratamiento;
+                reporte.Medico = GetNombreCompletoMedico(medico);
+                reportes.Add(reporte);
+                continue;
+            }
+
+            else if (filtro.TipoPaciente == "Colaborador" && paciente.TipoPaciente == "Colaborador")
+            {
+                reporte.Edad = GetEdad(paciente.FechaNacimiento);
+                reporte.Fecha = atencion.FechaAtencion.ToShortDateString();
+                reporte.NombreCompleto = GetNombreCompletoPaciente(paciente);
+                reporte.Departamento = paciente.Departamento;
+                reporte.Diagnostico = atencion.Diagnostico;
+                reporte.Tratamiento = atencion.Tratamiento;
+                reporte.Medico = GetNombreCompletoMedico(medico);
+                reportes.Add(reporte);
+                continue;
+            }
+
+            else if (filtro.TipoPaciente == "Externo" && paciente.TipoPaciente == "Externo")
+            {
+                reporte.Edad = GetEdad(paciente.FechaNacimiento);
+                reporte.Fecha = atencion.FechaAtencion.ToShortDateString();
+                reporte.NombreCompleto = GetNombreCompletoPaciente(paciente);
+                reporte.Telefono = paciente.Telefono;
+                reporte.Diagnostico = atencion.Diagnostico;
+                reporte.Tratamiento = atencion.Tratamiento;
+                reporte.Medico = GetNombreCompletoMedico(medico);
+                reportes.Add(reporte);
+                continue;
+            }
+
+            else
+            {
+                reporte.Edad = GetEdad(paciente.FechaNacimiento);
+                reporte.Fecha = atencion.FechaAtencion.ToShortDateString();
+                reporte.NombreCompleto = GetNombreCompletoPaciente(paciente);
+                reporte.Telefono = paciente.Telefono;
+                reporte.Carrera = paciente.Carrera;
+                reporte.Matricula = paciente.Matricula;
+                reporte.Departamento = paciente.Departamento;
+                reporte.Diagnostico = atencion.Diagnostico;
+                reporte.Tratamiento = atencion.Tratamiento;
+                reporte.Medico = GetNombreCompletoMedico(medico);
+                reportes.Add(reporte);
+                continue;
+            }
         }
-
         return reportes;
     }
-
 }

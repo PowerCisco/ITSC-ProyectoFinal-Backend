@@ -6,7 +6,7 @@ public class Atencion{
     public string Diagnostico {get;set;}
     public string Tratamiento {get;set;}
     public DateTime FechaAtencion {get;set;}
-
+    
     public string? MedicamentosIndicados {get;set;}
 
 

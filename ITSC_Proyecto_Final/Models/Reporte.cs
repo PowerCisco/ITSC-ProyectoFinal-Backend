@@ -12,10 +12,14 @@ public class Reporte
     public string? Fecha { get; set; }
     public string? NombreCompleto { get; set; }
     public int? Edad { get; set; }
-    public string? Telefono { get; set; }
     public string? Diagnostico { get; set; }
     public string? Tratamiento { get; set; }
     public string? Medico { get; set; }
+    
+    public string? Carrera { get; set; }
+    public string? Matricula { get; set; }
+    public string? Departamento { get; set; }
+    public string? Telefono { get; set; }
 
 
 }
