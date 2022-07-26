@@ -18,11 +18,9 @@ public class ReporteController : ControllerBase
 
     // GET all action
     [HttpGet]
-    public IEnumerable<Reporte> Get(Fecha fecha)
+    public IEnumerable<Reporte> Get(Filtro filtro)
     {
-        return _service.GetReportes(fecha.FechaInicio, fecha.FechaFin);
+        return _service.GetReportes(filtro);
     }
-
-    
 
 }
