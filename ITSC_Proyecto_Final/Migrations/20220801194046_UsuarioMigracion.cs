@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ITSC_Proyecto_Final.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class UsuarioMigracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,20 @@ namespace ITSC_Proyecto_Final.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pacientes", x => x.PacienteId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Usuarios",
+                columns: table => new
+                {
+                    UsuarioId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombreUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Contrasena = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,6 +106,9 @@ namespace ITSC_Proyecto_Final.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Atenciones");
+
+            migrationBuilder.DropTable(
+                name: "Usuarios");
 
             migrationBuilder.DropTable(
                 name: "Medicos");
