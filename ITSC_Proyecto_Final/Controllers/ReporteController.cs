@@ -18,9 +18,11 @@ public class ReporteController : ControllerBase
 
     // GET all action
     [HttpGet]
-    public IEnumerable<Reporte> Get(Filtro filtro)
+    public IEnumerable<Reporte> Get([FromQuery] Filtro filtro)
     {
         return _service.GetReportes(filtro);
     }
+
+    
 
 }
