@@ -43,10 +43,10 @@ public class AtencionService
 
         if (AtencionToUpdate is not null)
         {
-            AtencionToUpdate.Diagnostico = atencion.Diagnostico;
-            AtencionToUpdate.Tratamiento = atencion.Tratamiento;
+            AtencionToUpdate.Diagnostico = atencion.Diagnostico ?? AtencionToUpdate.Diagnostico;
+            AtencionToUpdate.Tratamiento = atencion.Tratamiento ?? AtencionToUpdate.Tratamiento;
             AtencionToUpdate.FechaAtencion = atencion.FechaAtencion;
-            AtencionToUpdate.MedicamentosIndicados = atencion.MedicamentosIndicados;
+            AtencionToUpdate.MedicamentosIndicados = atencion.MedicamentosIndicados ?? AtencionToUpdate.MedicamentosIndicados;
             AtencionToUpdate.PacienteId = atencion.PacienteId;
             AtencionToUpdate.MedicoId = atencion.MedicoId;
 

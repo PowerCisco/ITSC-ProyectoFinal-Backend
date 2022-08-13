@@ -44,15 +44,15 @@ public class PacienteService
         if (PacienteToUpdate is not null)
         {
 
-            PacienteToUpdate.Nombre = Paciente.Nombre;
-            PacienteToUpdate.Apellido = Paciente.Apellido;
+            PacienteToUpdate.Nombre = Paciente.Nombre ?? PacienteToUpdate.Nombre;
+            PacienteToUpdate.Apellido = Paciente.Apellido ?? PacienteToUpdate.Apellido;
             PacienteToUpdate.FechaNacimiento = Paciente.FechaNacimiento;
-            PacienteToUpdate.TipoPaciente = Paciente.TipoPaciente;
-            PacienteToUpdate.Carrera = Paciente.Carrera;
-            PacienteToUpdate.Matricula = Paciente.Matricula;
-            PacienteToUpdate.Departamento = Paciente.Departamento;
-            PacienteToUpdate.Telefono = Paciente.Telefono;
-            PacienteToUpdate.Sexo = Paciente.Sexo;
+            PacienteToUpdate.TipoPaciente = Paciente.TipoPaciente ?? PacienteToUpdate.TipoPaciente;
+            PacienteToUpdate.Carrera = Paciente.Carrera ?? PacienteToUpdate.Carrera;
+            PacienteToUpdate.Matricula = Paciente.Matricula ?? PacienteToUpdate.Matricula;
+            PacienteToUpdate.Departamento = Paciente.Departamento ?? PacienteToUpdate.Departamento;
+            PacienteToUpdate.Telefono = Paciente.Telefono ?? PacienteToUpdate.Telefono;
+            PacienteToUpdate.Sexo = Paciente.Sexo ?? PacienteToUpdate.Sexo;
 
             _context.SaveChanges();
         }
