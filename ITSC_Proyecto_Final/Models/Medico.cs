@@ -11,6 +11,7 @@ public class Medico
     public string? PApellido { get; set; }
     public string? SApellido { get; set; }
     public string? Especialidad { get; set; }
+    public string? Email { get; set; }
 
     [JsonIgnore]
     public List<Atencion>? Atenciones { get; set; }

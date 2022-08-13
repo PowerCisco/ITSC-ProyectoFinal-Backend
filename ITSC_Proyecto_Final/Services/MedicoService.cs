@@ -44,11 +44,13 @@ public class MedicoService
 
         if (MedicoToUpdate is not null)
         {
-            MedicoToUpdate.PNombre = Medico.PNombre;
-            MedicoToUpdate.SNombre = Medico.SNombre;
-            MedicoToUpdate.PApellido = Medico.PApellido;
-            MedicoToUpdate.SApellido = Medico.SApellido;
-            MedicoToUpdate.Especialidad = Medico.Especialidad;
+            
+            MedicoToUpdate.PNombre = Medico.PNombre ?? MedicoToUpdate.PNombre;
+            MedicoToUpdate.SNombre = Medico.SNombre ?? MedicoToUpdate.SNombre;
+            MedicoToUpdate.PApellido = Medico.PApellido ?? MedicoToUpdate.PApellido;
+            MedicoToUpdate.SApellido = Medico.SApellido ?? MedicoToUpdate.SApellido;
+            MedicoToUpdate.Especialidad = Medico.Especialidad ?? MedicoToUpdate.Especialidad;
+            MedicoToUpdate.Email = Medico.Email ?? MedicoToUpdate.Email;
 
             _context.SaveChanges();
         }
